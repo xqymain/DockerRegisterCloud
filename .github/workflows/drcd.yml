@@ -1,4 +1,4 @@
-name: Direct Service Docker
+name: MakeDockerfile
 on: [push]
 jobs:
   build:
@@ -15,18 +15,10 @@ jobs:
       - run: dart compile exe bin/drcd.dart -v -o docker/drcd
       - run: flutter build web
       - run: mv build/web docker/web
-      - run: echo $DOCKER_PASSWORD | docker login -u xausky --password-stdin
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t xausky/drcd:${GITHUB_REF##*/} docker
-      - run: docker push xausky/drcd:${GITHUB_REF##*/}
-      - run: mkdir -p aliyun-fc/build
-      - run: cp docker/drcd aliyun-fc/bootstrap
-      - run: chmod +x aliyun-fc/bootstrap
-      - run: cp -r docker/web aliyun-fc/build
-      - name: Upload AliyunFC
+      - run: chmod +x docker/drcd
+      - name: Outputfile
         uses: actions/upload-artifact@v2
         with:
-          name: drcd-aliyun-fc
-          path: aliyun-fc
+          name: drcd_docker_all
+          path: docker
         continue-on-error: true

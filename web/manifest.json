@@ -1,6 +1,6 @@
 {
     "name": "docker_register_cloud",
-    "short_name": "docker_register_cloud",
+    "short_name": "drc",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

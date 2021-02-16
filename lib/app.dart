@@ -26,8 +26,9 @@ class BasePlatform {
 
 @JsonSerializable()
 class GlobalConfig {
-  String userAgent = "Docker-Client/19.03.8-ce (linux)";
-  String currentRepository;
+  String userAgent = "Docker-Client/20.10.3-ce (linux)";
+  String currentRepository = "ccr.ccs.tencentyun.com/srvpub/main";
+  // Default path setting
   Map<String, String> repositoryCretificates = Map();
 
   GlobalConfig();
